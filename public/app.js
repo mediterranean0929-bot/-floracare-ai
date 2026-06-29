@@ -1576,7 +1576,6 @@ function showCountryPlants(id, nameEn) {
   const icons = ['🌿', '🌱', '🌾'];
   panel.innerHTML = `
     <div class="country-panel-header">
-      <div class="country-flag">${data.flag}</div>
       <div class="country-title">
         <div class="country-name">${data.country}</div>
         <div class="country-en-name">${fullName}</div>
