@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FloraCare AI - 頂級植物識別與智能照護系統</title>
+  <!-- 引入 FontAwesome 圖標庫 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- 引入設計樣式表 -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 背景流體模糊粒子 -->
+  <div class="bg-decorations">
+    <div class="decor-blob blob-1"></div>
+    <div class="decor-blob blob-2"></div>
+    <div class="decor-blob blob-3"></div>
+  </div>
+
+  <!-- 頂部奢華導航列 -->
+  <header>
+    <div class="logo-area">
+      <div class="logo-icon">🪴</div>
+      <div class="logo-text">FloraCare AI</div>
+    </div>
+    <nav>
+      <div class="nav-link active" data-view="scanner"><i class="fas fa-qrcode"></i><span>辨識掃描</span></div>
+      <div class="nav-link" data-view="encyclopedia"><i class="fas fa-book"></i><span>植物百科</span></div>
+      <div class="nav-link" data-view="doctor"><i class="fas fa-stethoscope"></i><span>植物醫生</span></div>
+      <div class="nav-link" data-view="world"><i class="fas fa-globe"></i><span>世界植物</span></div>
+    </nav>
+  </header>
+
+  <!-- 應用程式主要內容容器 -->
+  <main class="app-container">
+
+    <!-- ==========================================================================
+         1. 辨識掃描視窗 (Scanner View)
+         ========================================================================== -->
+    <section id="scanner-view" class="app-view active">
+      <div class="scanner-grid">
+        
+        <!-- 左側：圖片上傳與拖放區 -->
+        <div class="glass-panel scan-card">
+          <h2 class="scan-title">AI 植物掃描儀</h2>
+          <p class="scan-subtitle">上傳植物照片或影片，AI 即時擷取關鍵畫面識別品種與種植指南</p>
+
+          <div class="upload-zone" id="upload-zone">
+            <!-- 掃描雷射光線 -->
+            <div class="scan-laser"></div>
+
+            <div class="upload-icon">
+              <i class="fas fa-cloud-upload-alt"></i>
+            </div>
+            <div class="upload-text">拖曳植物照片或影片至此，或點擊上傳</div>
+            <div class="upload-media-badges">
+              <span class="upload-media-badge">📷 照片</span>
+              <span class="upload-media-badge video-badge">🎬 影片</span>
+            </div>
+            <div class="upload-hint">JPG / PNG / WEBP｜MP4 / MOV，最大 100MB</div>
+
+            <!-- 上傳預覽容器（圖片 + 影片共用） -->
+            <div class="preview-container">
+              <img id="preview-img" class="preview-img" src="" alt="植物預覽" style="display:none;">
+              <video id="preview-video" class="preview-video" controls muted playsinline style="display:none;"></video>
+            </div>
+          </div>
+
+          <!-- 影格縮圖條（影片模式專用） -->
+          <div id="frame-strip" class="frame-strip" style="display:none;">
+            <div class="frame-strip-label"><i class="fas fa-film"></i> 已擷取關鍵畫面（全部送入 AI 多影格分析）</div>
+            <div class="frame-strip-thumbs" id="frame-strip-thumbs"></div>
+          </div>
+
+          <input type="file" id="file-input" accept="image/*,video/*">
+
+          <!-- 一鍵測試區 (Demo Section) -->
+          <div class="demo-section">
+            <h4 class="demo-title">沒有照片？點擊下方範例一鍵測試：</h4>
+            <div class="demo-grid">
+              <div class="demo-item" data-plant-id="monstera" data-name="龜背竹">
+                <div class="demo-img-placeholder" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('images/monstera.png'); background-size: cover; background-position: center;">
+                  <span>龜背竹</span>
+                </div>
+              </div>
+              <div class="demo-item" data-plant-id="snake_plant" data-name="虎尾蘭">
+                <div class="demo-img-placeholder" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('images/snake_plant.png'); background-size: cover; background-position: center;">
+                  <span>虎尾蘭</span>
+                </div>
+              </div>
+              <div class="demo-item" data-plant-id="fiddle_leaf_fig" data-name="琴葉榕">
+                <div class="demo-img-placeholder" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('images/fiddle_leaf_fig.png'); background-size: cover; background-position: center;">
+                  <span>琴葉榕</span>
+                </div>
+              </div>
+              <div class="demo-item" data-plant-id="pothos" data-name="黃金葛">
+                <div class="demo-img-placeholder" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('images/pothos.png'); background-size: cover; background-position: center;">
+                  <span>黃金葛</span>
+                </div>
+              </div>
+              <div class="demo-item" data-plant-id="orchid" data-name="蝴蝶蘭">
+                <div class="demo-img-placeholder" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('images/orchid.png'); background-size: cover; background-position: center;">
+                  <span>蝴蝶蘭</span>
+                </div>
+              </div>
+              <div class="demo-item" data-plant-id="lavender" data-name="薰衣草">
+                <div class="demo-img-placeholder" style="background-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.7)), url('images/lavender.png'); background-size: cover; background-position: center;">
+                  <span>薰衣草</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 右側：掃描狀態與比對結果 -->
+        <div class="glass-panel result-card">
+          <!-- 初始閒置狀態 -->
+          <div id="status-placeholder" class="status-placeholder">
+            <i class="fas fa-radar"></i>
+            <h3 style="font-size: 20px; font-weight: 600; margin-bottom: 8px;">準備就緒</h3>
+            <p style="font-size: 14px; max-width: 320px; margin: 0 auto;">請上傳植物照片或點擊下方測試卡片，啟動 AI 電子葉脈分析系統。</p>
+          </div>
+
+          <!-- 分析進度控制台 -->
+          <div id="console-loader" class="console-loader">
+            <!-- 由 app.js 動態打字輸出日誌 -->
+          </div>
+
+          <!-- 辨識匹配結果 -->
+          <div id="match-results" class="match-results">
+            <h4 class="match-header"><i class="fas fa-dna"></i> 辨識匹配結果 (點擊品種開啟照護指南)</h4>
+            <div id="match-list-container" class="match-list">
+              <!-- 由 app.js 動態渲染 -->
+            </div>
+            <!-- 購買管道 — 由 app.js 在識別完成後渲染 -->
+            <div id="seller-section" style="display:none;"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==========================================================================
+         3. 植物照護大百科 (Encyclopedia View)
+         ========================================================================== -->
+    <section id="encyclopedia-view" class="app-view">
+      <div class="encyclopedia-header">
+        <div>
+          <h2 style="font-size: 32px;">植物照護大百科</h2>
+          <p style="color: var(--text-secondary); font-size: 14px; margin-top: 4px;">檢索 18 種明星熱門植物的土壤配方、水分、施肥及病蟲害防治技巧（含玫瑰、向日葵、繡球花等精美花卉）</p>
+        </div>
+        
+        <div class="search-filter-row">
+          <div class="search-box-wrapper">
+            <i class="fas fa-search"></i>
+            <input type="text" id="search-input" class="search-input" placeholder="搜尋植物中文名、英文名、學名...">
+          </div>
+          
+          <div class="filter-tags">
+            <button class="filter-btn active" data-filter="all">全部品種</button>
+            <button class="filter-btn" data-filter="easy">新手推薦</button>
+            <button class="filter-btn" data-filter="pet">寵物無毒</button>
+            <button class="filter-btn" data-filter="air">空氣淨化</button>
+            <button class="filter-btn" data-filter="dry">極度耐旱</button>
+            <button class="filter-btn" data-filter="flower">精美花卉</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 百科卡片網格 -->
+      <div id="encyclopedia-grid" class="encyclopedia-grid">
+        <!-- 由 app.js 根據數據庫渲染 -->
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         4. 植物醫生診斷視窗 (Plant Doctor View)
+         ========================================================================== -->
+    <section id="doctor-view" class="app-view">
+      <div class="doctor-container">
+        
+        <!-- 左側：診斷問答卡 -->
+        <div class="glass-panel doctor-wizard-panel">
+          <div class="wizard-title-area">
+            <h2 class="wizard-title"><i class="fas fa-stethoscope"></i> 植物醫生問診精靈</h2>
+            <div class="wizard-step-indicator">步驟 <span id="doctor-step-num">1</span> / 3</div>
+          </div>
+
+          <!-- 診斷模式切換 -->
+          <div class="doctor-mode-tabs">
+            <button class="doctor-tab active" id="tab-wizard"><i class="fas fa-clipboard-list"></i>&ensp;問診精靈</button>
+            <button class="doctor-tab" id="tab-photo"><i class="fas fa-camera-retro"></i>&ensp;照片診斷</button>
+          </div>
+
+          <!-- Step 1: 選擇部位 -->
+          <div class="wizard-step active" data-step-idx="0">
+            <h3 class="question-text">1. 請問植物目前受害最嚴重的部位在哪裡？</h3>
+            <div class="options-list">
+              <div class="option-card" data-step="part" data-value="leaves">
+                <div class="option-circle"></div>
+                <div class="option-label">葉片主體（發黃、斑點、脫落、白粉）</div>
+              </div>
+              <div class="option-card" data-step="part" data-value="stems">
+                <div class="option-circle"></div>
+                <div class="option-label">根莖基部（軟爛、發黑、倒伏）</div>
+              </div>
+              <div class="option-card" data-step="part" data-value="soil">
+                <div class="option-circle"></div>
+                <div class="option-label">土壤周圍 / 整株（有飛蟲、黴菌發臭）</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 2: 選擇主要病徵 -->
+          <div class="wizard-step" data-step-idx="1">
+            <h3 class="question-text">2. 請問目前觀察到最明顯的異常病徵是什麼？</h3>
+            <div class="options-list">
+              <div class="option-card" data-step="symptom" data-value="yellow_drop">
+                <div class="option-circle"></div>
+                <div class="option-label">葉片發黃下垂、大量落葉</div>
+              </div>
+              <div class="option-card" data-step="symptom" data-value="white_powder">
+                <div class="option-circle"></div>
+                <div class="option-label">葉面覆蓋一層白色粉末黴斑</div>
+              </div>
+              <div class="option-card" data-step="symptom" data-value="brown_spots">
+                <div class="option-circle"></div>
+                <div class="option-label">葉片出現紅褐色同心圓斑點 / 焦尖</div>
+              </div>
+              <div class="option-card" data-step="symptom" data-value="spider_webs">
+                <div class="option-circle"></div>
+                <div class="option-label">葉背出現細微蜘蛛網與沙黃微點</div>
+              </div>
+              <div class="option-card" data-step="symptom" data-value="gnats">
+                <div class="option-circle"></div>
+                <div class="option-label">土裡頻繁飛出黑色小黑飛蟲</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Step 3: 選擇近期照護頻率 -->
+          <div class="wizard-step" data-step-idx="2">
+            <h3 class="question-text">3. 請問您最近對這盆植物的照護史與環境如何？</h3>
+            <div class="options-list">
+              <div class="option-card" data-step="history" data-value="too_wet">
+                <div class="option-circle"></div>
+                <div class="option-label">盆土經常濕漉漉，托盤常有積水</div>
+              </div>
+              <div class="option-card" data-step="history" data-value="too_dry">
+                <div class="option-circle"></div>
+                <div class="option-label">太久沒澆水，盆土乾裂且重量極輕</div>
+              </div>
+              <div class="option-card" data-step="history" data-value="normal">
+                <div class="option-circle"></div>
+                <div class="option-label">定期澆水，擺在室內通風較弱之處</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 照片診斷模式面板 -->
+          <div id="doctor-photo-panel" style="display:none;">
+            <div class="doctor-upload-zone" id="doctor-upload-zone">
+              <div class="doc-upload-icon"><i class="fas fa-camera-retro"></i></div>
+              <div class="doc-upload-text">拖曳植物患部照片至此，或點擊選取</div>
+              <div class="doc-upload-hint">支援 JPG / PNG / WEBP，最大 20MB</div>
+              <img id="doctor-preview" class="doc-preview-img" alt="患部預覽" style="display:none;">
+            </div>
+            <input type="file" id="doctor-file-input" accept="image/*" style="display:none;">
+            <div id="doctor-photo-console" class="console-loader" style="display:none; margin-top:14px;"></div>
+            <button id="doctor-analyze-btn" class="btn-primary" style="display:none; width:100%; margin-top:16px;">
+              <i class="fas fa-microscope"></i>&ensp;開始 AI 影像診斷
+            </button>
+          </div>
+
+          <!-- 問答導航按鈕 -->
+          <div class="wizard-nav-btns">
+            <button class="btn-outline" id="doctor-prev-btn" style="visibility: hidden;">
+              <i class="fas fa-arrow-left"></i> 上一步
+            </button>
+            <button class="btn-primary" id="doctor-next-btn" disabled>
+              下一步 <i class="fas fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- 右側：診斷報告輸出區 -->
+        <div class="glass-panel doctor-report-panel">
+          <div id="report-empty" class="report-empty">
+            <i class="fas fa-scroll"></i>
+            <h3>未生成報告</h3>
+            <p style="font-size: 14px; max-width: 300px; margin: 8px auto 0;">請在左側依序回答問診問題，以供專家系統分析可能的植物疾病並生成處方。</p>
+          </div>
+
+          <div id="report-content" class="report-content">
+            <div class="report-header">
+              <div class="report-header-top">
+                <span class="report-tag-danger"><i class="fas fa-virus"></i> 異常預警</span>
+                <button class="btn-outline" onclick="resetDoctorWizard()" style="padding: 6px 12px; font-size: 13px;">
+                  <i class="fas fa-redo"></i> 重新診斷
+                </button>
+              </div>
+              <h1 id="diag-name" class="diagnosis-title">根腐病 (Root Rot)</h1>
+              <div id="diag-possibility" class="diagnosis-possibility">診斷機率: 95%</div>
+            </div>
+
+            <div class="report-section">
+              <div class="section-title"><i class="fas fa-info-circle"></i> 病因分析</div>
+              <div id="diag-reason" class="section-text">
+                因盆土長期處於過飽和的濕漉狀態，導致根系缺氧窒息壞死進而發黑腐爛。
+              </div>
+            </div>
+
+            <div class="report-section">
+              <div class="section-title"><i class="fas fa-eye"></i> 病理表徵</div>
+              <div id="diag-symptom" class="section-text">
+                葉片發黃軟下垂、新葉發黑萎縮，土中散發酸腐味。
+              </div>
+            </div>
+
+            <div class="report-section">
+              <div class="section-title" style="color: var(--accent);"><i class="fas fa-first-aid"></i> 步驟化急救復原方案</div>
+              <div id="diag-treatments" class="treatment-steps">
+                <!-- 由 app.js 動態渲染 -->
+              </div>
+            </div>
+
+            <!-- 推薦藥物與購藥管道（診斷後由 JS 渲染）-->
+            <div id="medicine-section" class="report-section" style="display:none;"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================================================
+         5. 世界植物地圖 (World Plants View)
+         ========================================================================== -->
+    <section id="world-view" class="app-view">
+
+      <!-- 頁首說明 -->
+      <div class="world-header">
+        <h2>🌍 世界植物地圖</h2>
+        <p>點擊地圖上已標記的國家，探索當地代表植物與國花</p>
+      </div>
+
+      <!-- 地圖 + 資訊面板主體 -->
+      <div class="world-layout">
+
+        <!-- 左：互動世界地圖 -->
+        <div class="world-map-wrapper">
+          <div id="world-map-chart"></div>
+          <div class="map-hint"><i class="fas fa-hand-pointer"></i> 點擊深色標記國家查看植物資訊，可滾輪縮放</div>
+        </div>
+
+        <!-- 右：國家植物資訊面板 -->
+        <div id="country-plant-panel" class="country-plant-panel">
+          <div class="panel-placeholder">
+            <div class="placeholder-globe">🌍</div>
+            <div class="placeholder-text">點擊地圖上的國家<br>探索當地植物與國花</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       6. 植物詳細資料抽屜 Sheet (Side Sheet)
+       ========================================================================== -->
+  <div class="side-sheet-backdrop" id="side-sheet-backdrop"></div>
+  <div class="side-sheet" id="plant-profile-sheet" style="--plant-color: var(--accent)">
+    <div class="sheet-header">
+      <button class="btn-close-sheet" onclick="closeSideSheet()"><i class="fas fa-times"></i></button>
+      <div class="sheet-title-info">
+        <h1 id="sheet-cn-name" class="sheet-cn-name">龜背竹</h1>
+        <div id="sheet-en-name" class="sheet-en-name">Monstera Deliciosa</div>
+        <div style="font-size: 13px; font-style: italic; color: var(--text-muted); margin-top: 4px;">
+          學名: <span id="sheet-scientific-name">Monstera deliciosa</span> | 科別: <span id="sheet-family">天南星科</span>
+        </div>
+        <div class="sheet-tags-row" id="sheet-tags">
+          <!-- 標籤 -->
+        </div>
+      </div>
+    </div>
+
+    <div class="sheet-body">
+      <!-- 簡介 -->
+      <div class="profile-desc" id="sheet-description">
+        描述內容...
+      </div>
+
+      <!-- 照護指標 widgets 網格 -->
+      <div class="care-widget-grid">
+        
+        <!-- 土壤 -->
+        <div class="care-widget full-width-widget">
+          <div class="widget-title"><i class="fas fa-mountain"></i> 1. 土壤介質需求 (Soil Specs)</div>
+          <div class="widget-value" style="color: var(--gold);">酸鹼度 pH: <span id="sheet-soil-ph">5.5 - 6.5</span></div>
+          <div class="widget-desc">
+            <strong>黃金介質比例:</strong> <span id="sheet-soil-recipe">...</span>
+          </div>
+          <!-- 介質比例視覺 bar -->
+          <div class="soil-ratio-visual" id="sheet-soil-ratio-bar">
+            <!-- 由 app.js 動態渲染不同泥炭、珍珠石配比 -->
+          </div>
+          <div class="widget-desc" style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+            <strong>提示:</strong> <span id="sheet-soil-tips">...</span>
+          </div>
+        </div>
+
+        <!-- 日照 -->
+        <div class="care-widget">
+          <div class="widget-title"><i class="fas fa-sun"></i> 2. 日照條件 (Sunlight)</div>
+          <div id="sheet-sun-level" class="widget-value" style="color: var(--accent);">明亮散射光</div>
+          <div id="sheet-sun-position" class="widget-desc">擺放在窗簾後的明亮窗邊。</div>
+        </div>
+
+        <!-- 水分 -->
+        <div class="care-widget">
+          <div class="widget-title"><i class="fas fa-tint"></i> 3. 澆水時程 (Watering)</div>
+          <div id="sheet-water-interval" class="widget-value">夏季 6 天 / 冬季 12 天</div>
+          <div id="sheet-water-guide" class="widget-desc">遵循「土乾澆透」原則。</div>
+        </div>
+
+        <!-- 施肥 -->
+        <div class="care-widget">
+          <div class="widget-title"><i class="fas fa-flask"></i> 4. 施肥要領 (Fertilization)</div>
+          <div id="sheet-fert-season" class="widget-value" style="color: var(--gold);">春季至秋季 (生長期)</div>
+          <div id="sheet-fert-guide" class="widget-desc">每月追施一次均衡的氮磷鉀液態肥料。</div>
+        </div>
+
+        <!-- 寵物安全性 -->
+        <div class="care-widget" id="sheet-pet-widget">
+          <div class="widget-title"><i class="fas fa-shield-cat"></i> 5. 家庭安全性 (Toxicity)</div>
+          <div id="sheet-pet-value" class="widget-value">有毒</div>
+          <div id="sheet-pet-desc" class="widget-desc">貓狗誤食會引發嚴重的口腔不適與中毒症狀。</div>
+          <div id="sheet-pet-badge" style="margin-top: 4px;"></div>
+        </div>
+
+        <!-- 病蟲害特選 -->
+        <div class="care-widget full-width-widget" style="border-color: rgba(255, 74, 74, 0.15);">
+          <div class="widget-title" style="color: var(--danger);"><i class="fas fa-skull-crossbones"></i> 6. 常見易感病蟲害與治療 (Pests & Diseases)</div>
+          <div class="pests-sect-list" id="sheet-pests-list">
+            <!-- 蟲害清單 -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- 詳情頁底部常駐按鈕 -->
+    <div class="sheet-action-bar">
+      <button class="btn-outline" onclick="closeSideSheet()" style="flex:1;">關閉詳情</button>
+    </div>
+  </div>
+
+  <!-- 全局飄浮 Toast 發光通知 -->
+  <div class="toast-notice" id="toast-notice">
+    <i class="fas fa-check-circle"></i>
+    <span>操作成功</span>
+  </div>
+
+  <!-- amCharts 5 世界地圖庫 -->
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+  <!-- 引入資料庫與邏輯腳本 -->
+  <script src="db.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
