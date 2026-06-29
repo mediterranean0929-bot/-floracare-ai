@@ -1,29 +1,29 @@
-﻿/* 祕密花園 — Secret Garden 視覺主題 (style.css) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Cinzel:wght@400;500&display=swap');
+﻿/* 祕密花園 — 鼠尾草白霧主題 (style.css) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&display=swap');
 
 :root {
-  /* 設計系統顏色 Token — 祕密花園 */
-  --bg-main: #0b1a0f;
-  --bg-gradient: linear-gradient(160deg, #0b1a0f 0%, #111f15 40%, #0e1c18 100%);
-  --bg-card: rgba(16, 38, 22, 0.72);
-  --bg-card-hover: rgba(22, 50, 30, 0.88);
-  --border-color: rgba(90, 150, 100, 0.18);
-  --border-color-glow: rgba(180, 210, 130, 0.35);
+  /* 設計系統顏色 Token — 鼠尾草白霧 */
+  --bg-main: #f4f1e8;
+  --bg-gradient: linear-gradient(170deg, #f8f5ec 0%, #eff0e4 45%, #eaede0 100%);
+  --bg-card: rgba(255, 253, 246, 0.82);
+  --bg-card-hover: rgba(255, 254, 250, 0.96);
+  --border-color: rgba(148, 168, 130, 0.25);
+  --border-color-glow: rgba(130, 158, 110, 0.38);
 
-  --primary: hsl(145, 38%, 40%);       /* 森林翠綠 */
-  --primary-glow: rgba(60, 140, 80, 0.28);
-  --accent: hsl(44, 68%, 55%);         /* 燈籠金光 */
-  --accent-rgb: 210, 168, 74;
-  --gold: hsl(30, 62%, 52%);           /* 琥珀暖橙 */
-  --gold-glow: rgba(190, 130, 70, 0.30);
-  --danger: hsl(354, 65%, 52%);
+  --primary: hsl(88, 20%, 42%);        /* 深鼠尾草 */
+  --primary-glow: rgba(130, 158, 110, 0.28);
+  --accent: hsl(88, 18%, 52%);         /* 鼠尾草綠 */
+  --accent-rgb: 145, 168, 118;
+  --gold: hsl(42, 35%, 58%);           /* 暖稻草 */
+  --gold-glow: rgba(175, 155, 100, 0.28);
+  --danger: hsl(354, 55%, 52%);
 
-  --text-primary: hsl(50, 38%, 88%);   /* 羊皮紙白 */
-  --text-secondary: hsl(145, 16%, 60%);/* 鼠尾草灰綠 */
-  --text-muted: hsl(145, 10%, 42%);    /* 深苔蘚 */
+  --text-primary: hsl(88, 14%, 22%);   /* 深橄欖 */
+  --text-secondary: hsl(88, 10%, 48%); /* 灰鼠尾草 */
+  --text-muted: hsl(88, 8%, 64%);      /* 淡苔色 */
 
   /* 字型 Family */
-  --font-title: 'Playfair Display', 'Cinzel', Georgia, serif;
+  --font-title: 'Playfair Display', Georgia, serif;
   --font-body: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* 圓角與陰影 */
@@ -32,11 +32,11 @@
   --radius-lg: 24px;
   --radius-xl: 32px;
 
-  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.40);
-  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.55);
-  --shadow-lg: 0 20px 56px rgba(0, 0, 0, 0.70);
-  --shadow-glow: 0 0 28px rgba(210, 168, 74, 0.22);
-  --shadow-glow-gold: 0 0 28px rgba(190, 130, 70, 0.26);
+  --shadow-sm: 0 3px 14px rgba(100, 120, 80, 0.10);
+  --shadow-md: 0 8px 28px rgba(100, 120, 80, 0.15);
+  --shadow-lg: 0 16px 48px rgba(100, 120, 80, 0.20);
+  --shadow-glow: 0 0 22px rgba(145, 168, 118, 0.22);
+  --shadow-glow-gold: 0 0 22px rgba(175, 155, 100, 0.22);
 
   /* 轉場動畫時間 */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -95,37 +95,37 @@ body {
 .decor-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(110px);
-  opacity: 0.18;
-  mix-blend-mode: screen;
+  filter: blur(100px);
+  opacity: 0.28;
+  mix-blend-mode: multiply;
   animation: float-blob 25s infinite alternate ease-in-out;
 }
 
 .blob-1 {
-  width: 550px;
-  height: 550px;
-  background: hsl(145, 55%, 28%);
-  top: -120px;
-  right: -100px;
+  width: 520px;
+  height: 520px;
+  background: hsl(88, 38%, 72%);
+  top: -100px;
+  right: -80px;
 }
 
 .blob-2 {
-  width: 650px;
-  height: 650px;
-  background: hsl(145, 45%, 18%);
-  bottom: -180px;
-  left: -120px;
+  width: 620px;
+  height: 620px;
+  background: hsl(88, 28%, 78%);
+  bottom: -160px;
+  left: -100px;
   opacity: 0.22;
   animation-delay: -5s;
 }
 
 .blob-3 {
-  width: 380px;
-  height: 380px;
-  background: hsl(44, 70%, 45%);
+  width: 360px;
+  height: 360px;
+  background: hsl(42, 38%, 78%);
   top: 38%;
-  left: 30%;
-  opacity: 0.10;
+  left: 28%;
+  opacity: 0.18;
   animation-delay: -10s;
 }
 
@@ -156,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass-panel:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(90, 160, 100, 0.35);
+  border-color: rgba(130, 158, 110, 0.40);
   box-shadow: var(--shadow-md);
 }
 
@@ -165,10 +165,10 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(8, 18, 10, 0.85);
+  background: rgba(248, 245, 236, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(80, 140, 90, 0.22);
+  border-bottom: 1px solid rgba(148, 168, 130, 0.28);
   padding: 14px 40px;
   display: flex;
   justify-content: space-between;
@@ -182,21 +182,21 @@ header {
 }
 
 .logo-icon {
-  background: linear-gradient(135deg, hsl(145,45%,22%) 0%, hsl(44,60%,40%) 100%);
+  background: linear-gradient(135deg, hsl(88,28%,52%) 0%, hsl(88,22%,68%) 100%);
   width: 42px;
   height: 42px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 16px rgba(0,0,0,0.50), 0 0 12px rgba(200,168,70,0.20);
+  box-shadow: 0 4px 14px rgba(100,120,80,0.22);
   font-size: 20px;
   animation: pulse-icon 3s infinite alternate;
 }
 
 @keyframes pulse-icon {
-  0% { box-shadow: 0 4px 16px rgba(0,0,0,0.50), 0 0 10px rgba(200,168,70,0.15); }
-  100% { box-shadow: 0 4px 22px rgba(0,0,0,0.60), 0 0 22px rgba(200,168,70,0.35); }
+  0% { box-shadow: 0 4px 14px rgba(100,120,80,0.18); }
+  100% { box-shadow: 0 4px 20px rgba(100,120,80,0.36); }
 }
 
 .logo-text {
@@ -204,7 +204,7 @@ header {
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  background: linear-gradient(to right, hsl(50,40%,88%) 10%, hsl(44,68%,60%) 100%);
+  background: linear-gradient(to right, hsl(88,20%,28%) 10%, hsl(88,22%,52%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -230,8 +230,8 @@ nav {
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--accent);
-  background: rgba(180, 148, 60, 0.12);
+  color: var(--primary);
+  background: rgba(130, 158, 110, 0.12);
 }
 
 .nav-link i {
@@ -2484,144 +2484,143 @@ nav {
 }
 
 /* ============================================================
-   祕密花園主題 — 全域 Override
+   鼠尾草白霧主題 — 全域 Override
    ============================================================ */
 
 /* 捲軸 */
-::-webkit-scrollbar-track  { background: rgba(0,0,0,0.25) !important; }
-::-webkit-scrollbar-thumb  { background: rgba(80,150,90,0.35) !important; }
+::-webkit-scrollbar-track  { background: rgba(148,168,130,0.10) !important; }
+::-webkit-scrollbar-thumb  { background: rgba(130,158,110,0.30) !important; }
 ::-webkit-scrollbar-thumb:hover { background: var(--accent) !important; }
 
 /* 狀態佔位圖示 */
-.status-placeholder i { color: rgba(80, 150, 90, 0.15) !important; }
+.status-placeholder i { color: rgba(130,158,110,0.15) !important; }
 
 /* 掃描上傳區 */
 .upload-zone {
-  background: rgba(10, 25, 14, 0.55) !important;
-  border-color: rgba(90, 150, 100, 0.30) !important;
+  background: rgba(255,252,244,0.55) !important;
+  border-color: rgba(148,168,130,0.32) !important;
 }
 .upload-zone:hover, .upload-zone.dragover {
-  background: rgba(15, 35, 20, 0.75) !important;
+  background: rgba(255,253,248,0.80) !important;
   border-color: var(--accent) !important;
-  box-shadow: 0 0 24px rgba(180, 148, 60, 0.18) !important;
+  box-shadow: 0 0 20px rgba(130,158,110,0.15) !important;
 }
 
 /* Console AI 分析 */
 .console-loader {
-  background: rgba(6, 18, 9, 0.80) !important;
-  border-color: rgba(80, 150, 90, 0.25) !important;
-  color: hsl(144, 50%, 52%) !important;
+  background: rgba(242,242,234,0.88) !important;
+  border-color: rgba(148,168,130,0.28) !important;
+  color: hsl(88, 28%, 38%) !important;
 }
 
 /* 匹配結果列表 */
 .match-item {
-  background: rgba(12, 30, 16, 0.60) !important;
-  border-color: rgba(80, 140, 90, 0.22) !important;
+  background: rgba(255,253,245,0.65) !important;
+  border-color: rgba(148,168,130,0.24) !important;
 }
 .match-item:hover {
-  background: rgba(18, 42, 24, 0.85) !important;
+  background: rgba(255,254,250,0.92) !important;
   border-color: var(--accent) !important;
 }
 .match-item.primary-match {
-  background: rgba(180, 148, 60, 0.06) !important;
-  border-color: rgba(180, 148, 60, 0.28) !important;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.40) !important;
+  background: rgba(145,168,118,0.07) !important;
+  border-color: rgba(130,158,110,0.32) !important;
+  box-shadow: 0 6px 20px rgba(100,120,80,0.12) !important;
 }
 
 /* 信心指數進度條 */
 .confidence-bar-fill {
-  background: linear-gradient(90deg, hsl(145,50%,35%), hsl(44,65%,52%)) !important;
+  background: linear-gradient(90deg, hsl(88,22%,52%), hsl(42,32%,60%)) !important;
 }
 
 /* 按鈕 */
 .btn-primary {
-  background: linear-gradient(135deg, hsl(145,42%,32%) 0%, hsl(44,62%,42%) 100%) !important;
-  color: hsl(50,38%,90%) !important;
-  box-shadow: 0 4px 18px rgba(0,0,0,0.45) !important;
+  background: linear-gradient(135deg, hsl(88,22%,46%) 0%, hsl(88,18%,60%) 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 16px rgba(100,120,80,0.25) !important;
 }
 .btn-primary:hover {
-  box-shadow: 0 6px 28px rgba(0,0,0,0.55), 0 0 16px rgba(180,148,60,0.25) !important;
+  box-shadow: 0 6px 24px rgba(100,120,80,0.38) !important;
 }
 .btn-secondary {
-  background: rgba(14, 34, 18, 0.70) !important;
-  border-color: rgba(80, 140, 90, 0.28) !important;
+  background: rgba(255,252,244,0.72) !important;
+  border-color: rgba(148,168,130,0.35) !important;
   color: var(--text-primary) !important;
 }
 
 /* 掃描雷射線 */
 .scan-laser {
-  background: linear-gradient(90deg, transparent, hsl(44,68%,55%), transparent) !important;
-  box-shadow: 0 0 14px hsl(44,68%,55%) !important;
+  background: linear-gradient(90deg, transparent, hsl(88,28%,52%), transparent) !important;
+  box-shadow: 0 0 12px hsl(88,28%,52%) !important;
 }
 
 /* 掃描標題 */
 .scan-title {
-  background: linear-gradient(to right, hsl(50,38%,88%), hsl(44,65%,60%)) !important;
+  background: linear-gradient(to right, hsl(88,14%,22%), hsl(88,20%,48%)) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
 /* 搜尋欄 / Input */
 .search-input, input[type="text"], input[type="search"], textarea, select {
-  background: rgba(10, 28, 14, 0.70) !important;
-  border: 1px solid rgba(80, 140, 90, 0.28) !important;
+  background: rgba(255,252,244,0.78) !important;
+  border: 1px solid rgba(148,168,130,0.30) !important;
   color: var(--text-primary) !important;
 }
 .search-input::placeholder { color: var(--text-muted) !important; }
 .search-input:focus, input:focus, textarea:focus {
   border-color: var(--accent) !important;
-  box-shadow: 0 0 0 3px rgba(180,148,60,0.15) !important;
-  background: rgba(14, 36, 20, 0.90) !important;
+  box-shadow: 0 0 0 3px rgba(130,158,110,0.15) !important;
+  background: rgba(255,254,250,0.96) !important;
   outline: none !important;
 }
 
 /* 過濾標籤 */
 .filter-chip {
-  background: rgba(12, 30, 16, 0.65) !important;
-  border-color: rgba(80, 140, 90, 0.22) !important;
+  background: rgba(255,252,244,0.68) !important;
+  border-color: rgba(148,168,130,0.28) !important;
   color: var(--text-secondary) !important;
 }
 .filter-chip:hover, .filter-chip.active {
-  background: rgba(180, 148, 60, 0.12) !important;
+  background: rgba(130,158,110,0.12) !important;
   border-color: var(--accent) !important;
-  color: var(--accent) !important;
+  color: var(--primary) !important;
 }
 
 /* 植物卡片 */
 .plant-card {
-  background: rgba(14, 34, 18, 0.72) !important;
-  border-color: rgba(80, 140, 90, 0.20) !important;
+  background: rgba(255,253,246,0.80) !important;
+  border-color: rgba(148,168,130,0.24) !important;
 }
 .plant-card:hover {
-  background: rgba(20, 48, 26, 0.90) !important;
-  border-color: rgba(180, 148, 60, 0.38) !important;
-  box-shadow: 0 8px 28px rgba(0,0,0,0.50), 0 0 14px rgba(180,148,60,0.10) !important;
+  background: rgba(255,254,250,0.96) !important;
+  border-color: rgba(130,158,110,0.42) !important;
 }
-.plant-card-title    { color: hsl(50,38%,88%) !important; }
-.plant-card-sci      { color: var(--text-muted) !important; font-style: italic; }
-.plant-card-desc     { color: var(--text-secondary) !important; }
+.plant-card-title { color: var(--text-primary) !important; }
+.plant-card-sci   { color: var(--text-muted) !important; font-style: italic; }
+.plant-card-desc  { color: var(--text-secondary) !important; }
 
 /* 難易度徽章 */
-.plant-card-difficulty.easy   { background: rgba(60,140,80,0.18)  !important; color: hsl(145,45%,52%) !important; }
-.plant-card-difficulty.medium { background: rgba(180,140,50,0.18) !important; color: hsl(44,55%,58%)  !important; }
-.plant-card-difficulty.hard   { background: rgba(160,60,60,0.18)  !important; color: hsl(354,55%,55%) !important; }
+.plant-card-difficulty.easy   { background: rgba(100,148,88,0.15)  !important; color: hsl(110,30%,38%) !important; }
+.plant-card-difficulty.medium { background: rgba(170,148,80,0.15)  !important; color: hsl(42,38%,40%)  !important; }
+.plant-card-difficulty.hard   { background: rgba(180,90,90,0.14)   !important; color: hsl(354,48%,45%) !important; }
 
 /* 植物卡片 tag */
 .plant-card-tag {
-  background: rgba(60, 120, 70, 0.18) !important;
-  color: hsl(145, 30%, 62%) !important;
+  background: rgba(130,158,110,0.14) !important;
+  color: hsl(88,18%,46%) !important;
   border: none !important;
 }
 
 /* Wikipedia shimmer */
 .wiki-img-loading {
   background: linear-gradient(90deg,
-    rgba(16,42,22,0.6) 25%,
-    rgba(26,58,32,0.8) 50%,
-    rgba(16,42,22,0.6) 75%
+    rgba(220,228,210,0.55) 25%,
+    rgba(238,242,230,0.80) 50%,
+    rgba(220,228,210,0.55) 75%
   ) !important;
   background-size: 200% 100% !important;
-  animation: shimmer 1.6s infinite !important;
+  animation: shimmer 1.5s infinite !important;
 }
 @keyframes shimmer {
   0%   { background-position: 200% 0; }
@@ -2630,56 +2629,53 @@ nav {
 
 /* 側面板 */
 .plant-profile-sheet {
-  background: #0c2014 !important;
-  box-shadow: -8px 0 48px rgba(0,0,0,0.65) !important;
+  background: #f5f2e8 !important;
+  box-shadow: -8px 0 40px rgba(100,120,80,0.18) !important;
 }
-.sheet-overlay { background: rgba(0, 10, 4, 0.55) !important; }
+.sheet-overlay { background: rgba(80,100,60,0.22) !important; }
 
 /* 診斷 chip */
 .diagnosis-chip {
-  background: rgba(180, 148, 60, 0.12) !important;
-  color: var(--accent) !important;
-  border: 1px solid rgba(180, 148, 60, 0.25) !important;
+  background: rgba(130,158,110,0.12) !important;
+  color: var(--primary) !important;
+  border: 1px solid rgba(130,158,110,0.26) !important;
 }
 
 /* 藥物類型標籤 */
-.medicine-type.bio  { background: rgba(60,140,80,0.18)  !important; color: hsl(145,40%,52%) !important; }
-.medicine-type.chem { background: rgba(180,140,50,0.18) !important; color: hsl(44,55%,58%)  !important; }
-.medicine-type.phys { background: rgba(80,110,180,0.18) !important; color: hsl(220,42%,62%) !important; }
+.medicine-type.bio  { background: rgba(100,150,88,0.15)  !important; color: hsl(110,32%,38%) !important; }
+.medicine-type.chem { background: rgba(170,148,80,0.15)  !important; color: hsl(42,38%,40%)  !important; }
+.medicine-type.phys { background: rgba(100,128,180,0.14) !important; color: hsl(220,35%,45%) !important; }
 
 /* 分頁按鈕 */
 .tab-btn, .doctor-tab, .seller-tab {
-  background: rgba(10, 28, 14, 0.65) !important;
-  border-color: rgba(80, 140, 90, 0.24) !important;
+  background: rgba(255,252,244,0.65) !important;
+  border-color: rgba(148,168,130,0.26) !important;
   color: var(--text-secondary) !important;
 }
 .tab-btn.active, .tab-btn:hover,
 .doctor-tab.active, .doctor-tab:hover,
 .seller-tab.active, .seller-tab:hover {
-  background: rgba(180, 148, 60, 0.12) !important;
+  background: rgba(130,158,110,0.12) !important;
   border-color: var(--accent) !important;
-  color: var(--accent) !important;
+  color: var(--primary) !important;
 }
 
 /* 醫生上傳區 */
 .doctor-upload-zone {
-  border-color: rgba(90, 150, 100, 0.32) !important;
-  background: rgba(10, 28, 14, 0.50) !important;
+  border-color: rgba(148,168,130,0.34) !important;
+  background: rgba(255,252,244,0.55) !important;
 }
 
 /* 藥物/賣家卡片 */
 .medicine-card, .seller-card, .garden-card, .garden-item {
-  background: rgba(12, 32, 16, 0.70) !important;
-  border-color: rgba(80, 140, 90, 0.20) !important;
+  background: rgba(255,252,244,0.72) !important;
+  border-color: rgba(148,168,130,0.22) !important;
 }
 .seller-card:hover {
   border-color: var(--accent) !important;
-  background: rgba(18, 44, 24, 0.90) !important;
+  background: rgba(255,254,250,0.95) !important;
 }
 
-/* 花園 */
-.garden-card { background: rgba(12, 32, 16, 0.70) !important; }
-
 /* 統計數字 */
-.stat-value { color: var(--accent) !important; }
+.stat-value { color: var(--primary) !important; }
 .stat-label { color: var(--text-muted) !important; }
