@@ -1481,6 +1481,10 @@ function initWorldMap() {
       wheelY: "zoom",
       minZoomLevel: 0.8,
       maxZoomLevel: 12,
+      background: am5.Rectangle.new(root, {
+        fill: am5.color(0xedeae0),   // 奶油米色海洋
+        fillOpacity: 1,
+      }),
     })
   );
 
@@ -1492,11 +1496,11 @@ function initWorldMap() {
     })
   );
 
-  // 預設樣式（無資料的國家）
+  // 預設樣式（無資料的國家）— 淺鼠尾草陸地
   polygonSeries.mapPolygons.template.setAll({
-    fill: am5.color(0x172a17),
-    stroke: am5.color(0x2c422c),
-    strokeWidth: 0.5,
+    fill: am5.color(0xb8c9a4),       // 淺鼠尾草（無資料國家）
+    stroke: am5.color(0xdde6d2),     // 更淺的邊界線
+    strokeWidth: 0.6,
     interactive: true,
     cursorOverStyle: "pointer",
     tooltipText: "{name}",
@@ -1504,20 +1508,20 @@ function initWorldMap() {
 
   // 懸停樣式
   polygonSeries.mapPolygons.template.states.create("hover", {
-    fill: am5.color(0x54FFBD),
-    fillOpacity: 0.3,
+    fill: am5.color(0x7a9860),       // 中深鼠尾草
+    fillOpacity: 0.85,
   });
 
   // 已選取樣式
   polygonSeries.mapPolygons.template.states.create("active", {
-    fill: am5.color(0x54FFBD),
-    fillOpacity: 0.5,
+    fill: am5.color(0x5e7a48),       // 深鼠尾草
+    fillOpacity: 0.95,
   });
 
-  // 有資料的國家顯示較亮的底色
+  // 有資料的國家顯示較深的鼠尾草底色
   polygonSeries.mapPolygons.template.adapters.add("fill", (fill, target) => {
     const id = target.dataItem ? target.dataItem.get("id") : null;
-    return (id && WORLD_PLANTS[id]) ? am5.color(0x254525) : fill;
+    return (id && WORLD_PLANTS[id]) ? am5.color(0x7a9860) : fill;
   });
 
   // 點擊：切換選取狀態並顯示植物資訊
