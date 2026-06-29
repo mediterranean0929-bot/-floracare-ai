@@ -1658,16 +1658,22 @@ window.switchSellerTab = function(btn, panel) {
 // ──────────────────────────────────────────────────────────────────────────
 async function fetchWikiSummary(title) {
   try {
-    const res = await fetch(
-      `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(title)}`,
-      { headers: { Accept: 'application/json' } }
-    );
-    if (!res.ok) return null;
+    const params = new URLSearchParams({
+      action: 'query', titles: title,
+      prop: 'pageimages|extracts', format: 'json',
+      pithumbsize: '600', exintro: '1', exchars: '300',
+      explaintext: '1', redirects: '1', origin: '*'
+    });
+    const res = await fetch(`https://en.wikipedia.org/w/api.php?${params}`);
+    if (!res.ok) throw new Error();
     const json = await res.json();
-    const rawImg = json.thumbnail?.source ?? null;
+    const pages = json.query?.pages;
+    if (!pages) throw new Error();
+    const page = Object.values(pages)[0];
+    if (!page || page.missing !== undefined) throw new Error();
     return {
-      img: rawImg ? rawImg.replace(/\/\d+px-/, '/400px-') : null,
-      extract: json.extract ?? ''
+      img: page.thumbnail?.source ?? null,
+      extract: (page.extract ?? '').replace(/\n+/g, ' ').trim()
     };
   } catch {
     return null;
