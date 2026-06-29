@@ -11,11 +11,96 @@
 </head>
 <body>
 
-  <!-- 背景流體模糊粒子 -->
+  <!-- 背景裝飾系統 -->
   <div class="bg-decorations">
     <div class="decor-blob blob-1"></div>
     <div class="decor-blob blob-2"></div>
     <div class="decor-blob blob-3"></div>
+    <div class="decor-blob blob-4"></div>
+
+    <!-- 右上角植物插畫 -->
+    <div class="bg-botanical bg-botanical-top">
+      <svg viewBox="0 0 480 560" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path d="M465,0 C435,85 398,155 365,235 C332,315 306,390 286,560" stroke="#7a9060" stroke-width="2.2" stroke-linecap="round" opacity="0.60"/>
+        <path d="M445,48 C415,30 390,38 376,58" stroke="#7a9060" stroke-width="1.4" stroke-linecap="round" opacity="0.52"/>
+        <path d="M412,108 C383,90 372,72 384,55" stroke="#7a9060" stroke-width="1.3" stroke-linecap="round" opacity="0.48"/>
+        <path d="M380,170 C351,152 344,134 356,120" stroke="#7a9060" stroke-width="1.2" stroke-linecap="round" opacity="0.46"/>
+        <path d="M350,232 C322,215 316,198 328,184" stroke="#7a9060" stroke-width="1.2" stroke-linecap="round" opacity="0.44"/>
+        <path d="M320,295 C293,278 288,262 300,248" stroke="#7a9060" stroke-width="1.1" stroke-linecap="round" opacity="0.40"/>
+        <path d="M430,78 C460,60 476,70 472,92" stroke="#7a9060" stroke-width="1.4" stroke-linecap="round" opacity="0.52"/>
+        <path d="M396,138 C428,122 443,132 436,155" stroke="#7a9060" stroke-width="1.3" stroke-linecap="round" opacity="0.48"/>
+        <path d="M364,200 C396,185 410,196 403,220" stroke="#7a9060" stroke-width="1.2" stroke-linecap="round" opacity="0.46"/>
+        <path d="M334,262 C366,248 378,260 370,283" stroke="#7a9060" stroke-width="1.1" stroke-linecap="round" opacity="0.42"/>
+        <!-- Left leaves -->
+        <path d="M376,58 C348,28 368,5 388,20 C400,38 386,62 376,58Z" fill="#8a9e74" opacity="0.45"/>
+        <path d="M384,55 C358,36 362,14 378,12 C392,10 402,40 384,55Z" fill="#9aae84" opacity="0.35"/>
+        <path d="M356,120 C330,100 334,78 350,75 C364,73 373,104 356,120Z" fill="#8a9e74" opacity="0.43"/>
+        <path d="M328,184 C303,165 308,143 324,141 C338,140 348,172 328,184Z" fill="#9aae84" opacity="0.40"/>
+        <path d="M300,248 C276,230 282,208 298,206 C312,205 320,236 300,248Z" fill="#8a9e74" opacity="0.38"/>
+        <!-- Right leaves -->
+        <path d="M472,92 C494,68 506,80 502,104 C496,124 472,112 472,92Z" fill="#8a9e74" opacity="0.43"/>
+        <path d="M436,155 C460,133 473,145 466,168 C459,188 436,175 436,155Z" fill="#8a9e74" opacity="0.40"/>
+        <path d="M403,220 C428,198 440,212 432,235 C425,255 403,242 403,220Z" fill="#9aae84" opacity="0.38"/>
+        <path d="M370,283 C396,262 408,275 400,298 C393,318 370,305 370,283Z" fill="#8a9e74" opacity="0.36"/>
+        <path d="M416,110 C404,94 412,82 422,82 C431,85 428,105 416,110Z" fill="#a8bc94" opacity="0.30"/>
+        <!-- Flower cluster 1 -->
+        <ellipse cx="350" cy="46" rx="13" ry="17" fill="#dce8c8" opacity="0.55" transform="rotate(-30 350 46)"/>
+        <ellipse cx="334" cy="36" rx="11" ry="15" fill="#dce8c8" opacity="0.50" transform="rotate(10 334 36)"/>
+        <ellipse cx="342" cy="20" rx="10" ry="14" fill="#e8f2d8" opacity="0.52" transform="rotate(-8 342 20)"/>
+        <ellipse cx="358" cy="26" rx="9" ry="13" fill="#e8f2d8" opacity="0.48" transform="rotate(22 358 26)"/>
+        <circle cx="346" cy="36" r="6" fill="#c2d6aa" opacity="0.58"/>
+        <circle cx="346" cy="36" r="3" fill="#8a9e74" opacity="0.45"/>
+        <!-- Flower cluster 2 -->
+        <ellipse cx="290" cy="210" rx="9" ry="12" fill="#dce8c8" opacity="0.45" transform="rotate(-20 290 210)"/>
+        <ellipse cx="278" cy="202" rx="8" ry="11" fill="#e8f2d8" opacity="0.42" transform="rotate(14 278 202)"/>
+        <circle cx="283" cy="208" r="4.5" fill="#c2d6aa" opacity="0.48"/>
+        <circle cx="283" cy="208" r="2.5" fill="#8a9e74" opacity="0.38"/>
+        <!-- Lower buds -->
+        <ellipse cx="295" cy="398" rx="5" ry="9" fill="#c0d4a8" opacity="0.32" transform="rotate(-12 295 398)"/>
+        <ellipse cx="306" cy="414" rx="4" ry="7" fill="#d0e2b8" opacity="0.28" transform="rotate(8 306 414)"/>
+        <ellipse cx="283" cy="422" rx="4" ry="8" fill="#c0d4a8" opacity="0.26" transform="rotate(-5 283 422)"/>
+      </svg>
+    </div>
+
+    <!-- 左下角植物插畫 -->
+    <div class="bg-botanical bg-botanical-bottom">
+      <svg viewBox="0 0 440 520" xmlns="http://www.w3.org/2000/svg" fill="none">
+        <path d="M10,520 C40,440 80,365 115,285 C150,205 175,130 192,0" stroke="#7a9060" stroke-width="2" stroke-linecap="round" opacity="0.58"/>
+        <path d="M30,480 C8,455 3,430 17,415" stroke="#7a9060" stroke-width="1.4" stroke-linecap="round" opacity="0.50"/>
+        <path d="M60,415 C37,398 34,378 47,364" stroke="#7a9060" stroke-width="1.3" stroke-linecap="round" opacity="0.46"/>
+        <path d="M91,348 C69,332 67,312 81,298" stroke="#7a9060" stroke-width="1.2" stroke-linecap="round" opacity="0.44"/>
+        <path d="M120,282 C98,266 97,246 111,232" stroke="#7a9060" stroke-width="1.1" stroke-linecap="round" opacity="0.40"/>
+        <path d="M44,452 C71,435 87,445 81,468" stroke="#7a9060" stroke-width="1.3" stroke-linecap="round" opacity="0.50"/>
+        <path d="M77,385 C104,370 117,382 111,405" stroke="#7a9060" stroke-width="1.2" stroke-linecap="round" opacity="0.46"/>
+        <path d="M108,318 C136,305 148,316 142,340" stroke="#7a9060" stroke-width="1.2" stroke-linecap="round" opacity="0.44"/>
+        <path d="M136,252 C164,240 176,252 168,275" stroke="#7a9060" stroke-width="1.1" stroke-linecap="round" opacity="0.40"/>
+        <!-- Left leaves -->
+        <path d="M17,415 C-6,394 -1,372 14,370 C28,369 37,400 17,415Z" fill="#8a9e74" opacity="0.42"/>
+        <path d="M47,364 C24,344 29,322 44,320 C58,319 67,350 47,364Z" fill="#9aae84" opacity="0.38"/>
+        <path d="M81,298 C59,278 65,256 79,255 C93,254 101,285 81,298Z" fill="#8a9e74" opacity="0.40"/>
+        <path d="M111,232 C89,213 96,191 110,190 C124,189 131,220 111,232Z" fill="#9aae84" opacity="0.36"/>
+        <!-- Right leaves -->
+        <path d="M81,468 C104,445 117,456 111,480 C104,500 81,488 81,468Z" fill="#8a9e74" opacity="0.42"/>
+        <path d="M111,405 C135,383 147,394 141,418 C134,438 111,425 111,405Z" fill="#8a9e74" opacity="0.40"/>
+        <path d="M142,340 C166,318 178,330 172,354 C165,374 142,362 142,340Z" fill="#9aae84" opacity="0.38"/>
+        <path d="M168,275 C192,254 204,266 198,290 C190,310 168,298 168,275Z" fill="#8a9e74" opacity="0.36"/>
+        <path d="M94,450 C81,434 89,422 99,422 C107,425 105,445 94,450Z" fill="#a8bc94" opacity="0.30"/>
+        <!-- Flower cluster bottom -->
+        <ellipse cx="51" cy="438" rx="12" ry="15" fill="#dce8c8" opacity="0.50" transform="rotate(20 51 438)"/>
+        <ellipse cx="37" cy="428" rx="10" ry="13" fill="#e8f2d8" opacity="0.46" transform="rotate(-15 37 428)"/>
+        <ellipse cx="45" cy="416" rx="9" ry="12" fill="#dce8c8" opacity="0.44" transform="rotate(5 45 416)"/>
+        <ellipse cx="62" cy="424" rx="8" ry="11" fill="#e8f2d8" opacity="0.42" transform="rotate(-10 62 424)"/>
+        <circle cx="47" cy="428" r="5.5" fill="#c2d6aa" opacity="0.52"/>
+        <circle cx="47" cy="428" r="3" fill="#8a9e74" opacity="0.42"/>
+        <!-- Mid flower -->
+        <ellipse cx="122" cy="265" rx="8" ry="11" fill="#dce8c8" opacity="0.40" transform="rotate(-18 122 265)"/>
+        <ellipse cx="112" cy="257" rx="7" ry="10" fill="#e8f2d8" opacity="0.36" transform="rotate(12 112 257)"/>
+        <circle cx="117" cy="263" r="4" fill="#c2d6aa" opacity="0.42"/>
+        <!-- Top buds -->
+        <ellipse cx="182" cy="52" rx="5" ry="9" fill="#c0d4a8" opacity="0.28" transform="rotate(8 182 52)"/>
+        <ellipse cx="194" cy="36" rx="4" ry="7" fill="#d0e2b8" opacity="0.24" transform="rotate(-5 194 36)"/>
+      </svg>
+    </div>
   </div>
 
   <!-- 頂部奢華導航列 -->
