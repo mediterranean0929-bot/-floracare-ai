@@ -1,29 +1,29 @@
-/* FloraCare AI - 優雅花卉水彩主題 (style.css) */
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Lato:wght@300;400;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&display=swap');
+﻿/* 祕密花園 — Secret Garden 視覺主題 (style.css) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700&family=Cinzel:wght@400;500&display=swap');
 
 :root {
-  /* 設計系統顏色 Token — 花卉水彩 */
-  --bg-main: #faf6f1;
-  --bg-gradient: linear-gradient(160deg, #fdf9f5 0%, #f7ede6 50%, #f0e8ef 100%);
-  --bg-card: rgba(255, 255, 255, 0.82);
-  --bg-card-hover: rgba(255, 255, 255, 0.96);
-  --border-color: rgba(210, 175, 165, 0.28);
-  --border-color-glow: rgba(195, 125, 135, 0.40);
+  /* 設計系統顏色 Token — 祕密花園 */
+  --bg-main: #0b1a0f;
+  --bg-gradient: linear-gradient(160deg, #0b1a0f 0%, #111f15 40%, #0e1c18 100%);
+  --bg-card: rgba(16, 38, 22, 0.72);
+  --bg-card-hover: rgba(22, 50, 30, 0.88);
+  --border-color: rgba(90, 150, 100, 0.18);
+  --border-color-glow: rgba(180, 210, 130, 0.35);
 
-  --primary: hsl(340, 32%, 48%);       /* 玫瑰粉 */
-  --primary-glow: rgba(190, 120, 130, 0.30);
-  --accent: hsl(340, 38%, 62%);        /* 淡玫瑰 */
-  --accent-rgb: 205, 130, 145;
-  --gold: hsl(28, 52%, 60%);           /* 暖杏 */
-  --gold-glow: rgba(200, 150, 110, 0.30);
-  --danger: hsl(354, 62%, 52%);
+  --primary: hsl(145, 38%, 40%);       /* 森林翠綠 */
+  --primary-glow: rgba(60, 140, 80, 0.28);
+  --accent: hsl(44, 68%, 55%);         /* 燈籠金光 */
+  --accent-rgb: 210, 168, 74;
+  --gold: hsl(30, 62%, 52%);           /* 琥珀暖橙 */
+  --gold-glow: rgba(190, 130, 70, 0.30);
+  --danger: hsl(354, 65%, 52%);
 
-  --text-primary: hsl(20, 28%, 18%);
-  --text-secondary: hsl(20, 14%, 46%);
-  --text-muted: hsl(20, 10%, 64%);
+  --text-primary: hsl(50, 38%, 88%);   /* 羊皮紙白 */
+  --text-secondary: hsl(145, 16%, 60%);/* 鼠尾草灰綠 */
+  --text-muted: hsl(145, 10%, 42%);    /* 深苔蘚 */
 
   /* 字型 Family */
-  --font-title: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+  --font-title: 'Playfair Display', 'Cinzel', Georgia, serif;
   --font-body: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 
   /* 圓角與陰影 */
@@ -32,11 +32,11 @@
   --radius-lg: 24px;
   --radius-xl: 32px;
 
-  --shadow-sm: 0 4px 16px rgba(180, 120, 110, 0.10);
-  --shadow-md: 0 10px 30px rgba(180, 120, 110, 0.15);
-  --shadow-lg: 0 18px 48px rgba(180, 120, 110, 0.20);
-  --shadow-glow: 0 0 24px rgba(205, 130, 145, 0.22);
-  --shadow-glow-gold: 0 0 24px rgba(200, 150, 110, 0.22);
+  --shadow-sm: 0 4px 16px rgba(0, 0, 0, 0.40);
+  --shadow-md: 0 10px 32px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 56px rgba(0, 0, 0, 0.70);
+  --shadow-glow: 0 0 28px rgba(210, 168, 74, 0.22);
+  --shadow-glow-gold: 0 0 28px rgba(190, 130, 70, 0.26);
 
   /* 轉場動畫時間 */
   --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
@@ -95,36 +95,37 @@ body {
 .decor-blob {
   position: absolute;
   border-radius: 50%;
-  filter: blur(90px);
-  opacity: 0.30;
-  mix-blend-mode: multiply;
+  filter: blur(110px);
+  opacity: 0.18;
+  mix-blend-mode: screen;
   animation: float-blob 25s infinite alternate ease-in-out;
 }
 
 .blob-1 {
-  width: 500px;
-  height: 500px;
-  background: hsl(340, 65%, 85%);
-  top: -100px;
-  right: -80px;
+  width: 550px;
+  height: 550px;
+  background: hsl(145, 55%, 28%);
+  top: -120px;
+  right: -100px;
 }
 
 .blob-2 {
-  width: 600px;
-  height: 600px;
-  background: hsl(120, 30%, 82%);
-  bottom: -150px;
-  left: -100px;
+  width: 650px;
+  height: 650px;
+  background: hsl(145, 45%, 18%);
+  bottom: -180px;
+  left: -120px;
+  opacity: 0.22;
   animation-delay: -5s;
 }
 
 .blob-3 {
-  width: 350px;
-  height: 350px;
-  background: hsl(28, 70%, 84%);
-  top: 35%;
-  left: 25%;
-  opacity: 0.22;
+  width: 380px;
+  height: 380px;
+  background: hsl(44, 70%, 45%);
+  top: 38%;
+  left: 30%;
+  opacity: 0.10;
   animation-delay: -10s;
 }
 
@@ -145,8 +146,8 @@ h1, h2, h3, h4, h5, h6 {
 /* 頂級毛玻璃面板基礎樣式 */
 .glass-panel {
   background: var(--bg-card);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
@@ -155,7 +156,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .glass-panel:hover {
   background: var(--bg-card-hover);
-  border-color: rgba(195, 140, 150, 0.40);
+  border-color: rgba(90, 160, 100, 0.35);
   box-shadow: var(--shadow-md);
 }
 
@@ -164,10 +165,10 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(253, 248, 244, 0.88);
+  background: rgba(8, 18, 10, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(210, 175, 165, 0.30);
+  border-bottom: 1px solid rgba(80, 140, 90, 0.22);
   padding: 14px 40px;
   display: flex;
   justify-content: space-between;
@@ -181,29 +182,29 @@ header {
 }
 
 .logo-icon {
-  background: linear-gradient(135deg, hsl(340,55%,75%) 0%, hsl(20,55%,68%) 100%);
+  background: linear-gradient(135deg, hsl(145,45%,22%) 0%, hsl(44,60%,40%) 100%);
   width: 42px;
   height: 42px;
   border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 4px 14px rgba(190,120,130,0.25);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.50), 0 0 12px rgba(200,168,70,0.20);
   font-size: 20px;
   animation: pulse-icon 3s infinite alternate;
 }
 
 @keyframes pulse-icon {
-  0% { box-shadow: 0 4px 14px rgba(190,120,130,0.20); }
-  100% { box-shadow: 0 4px 22px rgba(190,120,130,0.40); }
+  0% { box-shadow: 0 4px 16px rgba(0,0,0,0.50), 0 0 10px rgba(200,168,70,0.15); }
+  100% { box-shadow: 0 4px 22px rgba(0,0,0,0.60), 0 0 22px rgba(200,168,70,0.35); }
 }
 
 .logo-text {
   font-family: var(--font-title);
   font-size: 22px;
   font-weight: 600;
-  letter-spacing: 0.02em;
-  background: linear-gradient(to right, hsl(340,32%,38%) 20%, hsl(28,50%,52%) 100%);
+  letter-spacing: 0.04em;
+  background: linear-gradient(to right, hsl(50,40%,88%) 10%, hsl(44,68%,60%) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -229,8 +230,8 @@ nav {
 }
 
 .nav-link:hover, .nav-link.active {
-  color: var(--primary);
-  background: rgba(195, 125, 135, 0.10);
+  color: var(--accent);
+  background: rgba(180, 148, 60, 0.12);
 }
 
 .nav-link i {
@@ -2483,243 +2484,202 @@ nav {
 }
 
 /* ============================================================
-   花卉水彩主題 — 全域 Override (覆蓋深色系 hardcode 顏色)
+   祕密花園主題 — 全域 Override
    ============================================================ */
 
+/* 捲軸 */
+::-webkit-scrollbar-track  { background: rgba(0,0,0,0.25) !important; }
+::-webkit-scrollbar-thumb  { background: rgba(80,150,90,0.35) !important; }
+::-webkit-scrollbar-thumb:hover { background: var(--accent) !important; }
+
 /* 狀態佔位圖示 */
-.status-placeholder i {
-  color: rgba(180, 120, 110, 0.18) !important;
-}
+.status-placeholder i { color: rgba(80, 150, 90, 0.15) !important; }
 
 /* 掃描上傳區 */
 .upload-zone {
-  background: rgba(255, 255, 255, 0.55) !important;
-  border-color: rgba(195, 140, 150, 0.35) !important;
+  background: rgba(10, 25, 14, 0.55) !important;
+  border-color: rgba(90, 150, 100, 0.30) !important;
 }
 .upload-zone:hover, .upload-zone.dragover {
-  background: rgba(255, 255, 255, 0.78) !important;
+  background: rgba(15, 35, 20, 0.75) !important;
   border-color: var(--accent) !important;
-  box-shadow: 0 0 20px rgba(195, 130, 140, 0.18) !important;
+  box-shadow: 0 0 24px rgba(180, 148, 60, 0.18) !important;
 }
 
 /* Console AI 分析 */
 .console-loader {
-  background: rgba(253, 246, 240, 0.90) !important;
-  border-color: rgba(195, 140, 150, 0.28) !important;
-  color: hsl(340, 35%, 42%) !important;
+  background: rgba(6, 18, 9, 0.80) !important;
+  border-color: rgba(80, 150, 90, 0.25) !important;
+  color: hsl(144, 50%, 52%) !important;
 }
 
 /* 匹配結果列表 */
 .match-item {
-  background: rgba(255, 255, 255, 0.60) !important;
-  border-color: rgba(210, 175, 165, 0.30) !important;
+  background: rgba(12, 30, 16, 0.60) !important;
+  border-color: rgba(80, 140, 90, 0.22) !important;
 }
 .match-item:hover {
-  background: rgba(255, 255, 255, 0.90) !important;
+  background: rgba(18, 42, 24, 0.85) !important;
   border-color: var(--accent) !important;
 }
 .match-item.primary-match {
-  background: rgba(205, 130, 145, 0.06) !important;
-  border-color: rgba(195, 130, 140, 0.35) !important;
-  box-shadow: 0 6px 20px rgba(180, 120, 110, 0.12) !important;
+  background: rgba(180, 148, 60, 0.06) !important;
+  border-color: rgba(180, 148, 60, 0.28) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.40) !important;
 }
 
 /* 信心指數進度條 */
 .confidence-bar-fill {
-  background: linear-gradient(90deg, hsl(340,45%,68%), hsl(28,55%,62%)) !important;
+  background: linear-gradient(90deg, hsl(145,50%,35%), hsl(44,65%,52%)) !important;
 }
-
-/* 診斷報告卡 */
-.diagnosis-chip {
-  background: rgba(195, 130, 140, 0.12) !important;
-  color: var(--primary) !important;
-  border: 1px solid rgba(195, 130, 140, 0.28) !important;
-}
-
-/* 藥物類型標籤 */
-.medicine-type.bio  { background: rgba(120,170,100,0.15) !important; color: hsl(120,35%,38%) !important; }
-.medicine-type.chem { background: rgba(200,150,90,0.15)  !important; color: hsl(30,50%,42%)  !important; }
-.medicine-type.phys { background: rgba(100,140,200,0.15) !important; color: hsl(220,40%,45%) !important; }
 
 /* 按鈕 */
 .btn-primary {
-  background: linear-gradient(135deg, hsl(340,45%,60%) 0%, hsl(20,50%,60%) 100%) !important;
-  color: #fff !important;
-  box-shadow: 0 4px 16px rgba(190,115,125,0.30) !important;
+  background: linear-gradient(135deg, hsl(145,42%,32%) 0%, hsl(44,62%,42%) 100%) !important;
+  color: hsl(50,38%,90%) !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.45) !important;
 }
 .btn-primary:hover {
-  box-shadow: 0 6px 22px rgba(190,115,125,0.42) !important;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.55), 0 0 16px rgba(180,148,60,0.25) !important;
 }
 .btn-secondary {
-  background: rgba(255,255,255,0.70) !important;
-  border-color: rgba(210,175,165,0.40) !important;
+  background: rgba(14, 34, 18, 0.70) !important;
+  border-color: rgba(80, 140, 90, 0.28) !important;
   color: var(--text-primary) !important;
 }
 
 /* 掃描雷射線 */
 .scan-laser {
-  background: linear-gradient(90deg, transparent, hsl(340,55%,68%), transparent) !important;
-  box-shadow: 0 0 12px hsl(340,55%,68%) !important;
+  background: linear-gradient(90deg, transparent, hsl(44,68%,55%), transparent) !important;
+  box-shadow: 0 0 14px hsl(44,68%,55%) !important;
 }
 
-/* 植物百科 — 搜尋欄 */
+/* 掃描標題 */
+.scan-title {
+  background: linear-gradient(to right, hsl(50,38%,88%), hsl(44,65%,60%)) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* 搜尋欄 / Input */
 .search-input, input[type="text"], input[type="search"], textarea, select {
-  background: rgba(255,255,255,0.75) !important;
-  border: 1px solid rgba(210,175,165,0.35) !important;
+  background: rgba(10, 28, 14, 0.70) !important;
+  border: 1px solid rgba(80, 140, 90, 0.28) !important;
   color: var(--text-primary) !important;
 }
 .search-input::placeholder { color: var(--text-muted) !important; }
 .search-input:focus, input:focus, textarea:focus {
   border-color: var(--accent) !important;
-  box-shadow: 0 0 0 3px rgba(195,130,140,0.15) !important;
-  background: rgba(255,255,255,0.95) !important;
+  box-shadow: 0 0 0 3px rgba(180,148,60,0.15) !important;
+  background: rgba(14, 36, 20, 0.90) !important;
   outline: none !important;
 }
 
-/* 植物百科 — 過濾標籤 */
+/* 過濾標籤 */
 .filter-chip {
-  background: rgba(255,255,255,0.65) !important;
-  border-color: rgba(210,175,165,0.35) !important;
+  background: rgba(12, 30, 16, 0.65) !important;
+  border-color: rgba(80, 140, 90, 0.22) !important;
   color: var(--text-secondary) !important;
 }
 .filter-chip:hover, .filter-chip.active {
-  background: rgba(195,130,140,0.12) !important;
+  background: rgba(180, 148, 60, 0.12) !important;
   border-color: var(--accent) !important;
-  color: var(--primary) !important;
+  color: var(--accent) !important;
 }
 
 /* 植物卡片 */
 .plant-card {
-  background: rgba(255,255,255,0.80) !important;
-  border-color: rgba(210,175,165,0.28) !important;
+  background: rgba(14, 34, 18, 0.72) !important;
+  border-color: rgba(80, 140, 90, 0.20) !important;
 }
 .plant-card:hover {
-  background: rgba(255,255,255,0.96) !important;
-  border-color: rgba(195,130,140,0.40) !important;
+  background: rgba(20, 48, 26, 0.90) !important;
+  border-color: rgba(180, 148, 60, 0.38) !important;
+  box-shadow: 0 8px 28px rgba(0,0,0,0.50), 0 0 14px rgba(180,148,60,0.10) !important;
 }
-.plant-card-title { color: var(--text-primary) !important; }
-.plant-card-sci   { color: var(--text-muted) !important; font-style: italic; }
-.plant-card-desc  { color: var(--text-secondary) !important; }
+.plant-card-title    { color: hsl(50,38%,88%) !important; }
+.plant-card-sci      { color: var(--text-muted) !important; font-style: italic; }
+.plant-card-desc     { color: var(--text-secondary) !important; }
 
 /* 難易度徽章 */
-.plant-card-difficulty.easy   { background: rgba(100,175,100,0.15) !important; color: hsl(130,38%,38%) !important; }
-.plant-card-difficulty.medium { background: rgba(200,155,80,0.15)  !important; color: hsl(30,50%,40%)  !important; }
-.plant-card-difficulty.hard   { background: rgba(195,90,90,0.15)   !important; color: hsl(354,50%,45%) !important; }
+.plant-card-difficulty.easy   { background: rgba(60,140,80,0.18)  !important; color: hsl(145,45%,52%) !important; }
+.plant-card-difficulty.medium { background: rgba(180,140,50,0.18) !important; color: hsl(44,55%,58%)  !important; }
+.plant-card-difficulty.hard   { background: rgba(160,60,60,0.18)  !important; color: hsl(354,55%,55%) !important; }
 
 /* 植物卡片 tag */
 .plant-card-tag {
-  background: rgba(210,175,165,0.18) !important;
-  color: var(--text-secondary) !important;
+  background: rgba(60, 120, 70, 0.18) !important;
+  color: hsl(145, 30%, 62%) !important;
   border: none !important;
 }
 
-/* Wikipedia 載入 shimmer */
+/* Wikipedia shimmer */
 .wiki-img-loading {
   background: linear-gradient(90deg,
-    rgba(230,210,205,0.5) 25%,
-    rgba(245,230,225,0.8) 50%,
-    rgba(230,210,205,0.5) 75%
+    rgba(16,42,22,0.6) 25%,
+    rgba(26,58,32,0.8) 50%,
+    rgba(16,42,22,0.6) 75%
   ) !important;
   background-size: 200% 100% !important;
-  animation: shimmer 1.5s infinite !important;
+  animation: shimmer 1.6s infinite !important;
 }
 @keyframes shimmer {
   0%   { background-position: 200% 0; }
   100% { background-position: -200% 0; }
 }
 
-/* 植物側面板 Sheet */
+/* 側面板 */
 .plant-profile-sheet {
-  background: #fdfaf7 !important;
-  box-shadow: -8px 0 40px rgba(180,120,110,0.18) !important;
+  background: #0c2014 !important;
+  box-shadow: -8px 0 48px rgba(0,0,0,0.65) !important;
 }
-.sheet-overlay { background: rgba(120,80,70,0.25) !important; }
+.sheet-overlay { background: rgba(0, 10, 4, 0.55) !important; }
 
-/* 資料列表格 */
-.care-table td, .care-table th {
-  border-color: rgba(210,175,165,0.20) !important;
-}
-.care-table th {
-  background: rgba(210,175,165,0.12) !important;
-  color: var(--text-primary) !important;
+/* 診斷 chip */
+.diagnosis-chip {
+  background: rgba(180, 148, 60, 0.12) !important;
+  color: var(--accent) !important;
+  border: 1px solid rgba(180, 148, 60, 0.25) !important;
 }
 
-/* 花園頁 */
-.garden-card, .garden-item {
-  background: rgba(255,255,255,0.80) !important;
-  border-color: rgba(210,175,165,0.28) !important;
-}
+/* 藥物類型標籤 */
+.medicine-type.bio  { background: rgba(60,140,80,0.18)  !important; color: hsl(145,40%,52%) !important; }
+.medicine-type.chem { background: rgba(180,140,50,0.18) !important; color: hsl(44,55%,58%)  !important; }
+.medicine-type.phys { background: rgba(80,110,180,0.18) !important; color: hsl(220,42%,62%) !important; }
 
-/* 工具分頁 */
-.tab-btn {
-  background: rgba(255,255,255,0.55) !important;
-  border-color: rgba(210,175,165,0.30) !important;
+/* 分頁按鈕 */
+.tab-btn, .doctor-tab, .seller-tab {
+  background: rgba(10, 28, 14, 0.65) !important;
+  border-color: rgba(80, 140, 90, 0.24) !important;
   color: var(--text-secondary) !important;
 }
-.tab-btn.active, .tab-btn:hover {
-  background: rgba(195,130,140,0.12) !important;
+.tab-btn.active, .tab-btn:hover,
+.doctor-tab.active, .doctor-tab:hover,
+.seller-tab.active, .seller-tab:hover {
+  background: rgba(180, 148, 60, 0.12) !important;
   border-color: var(--accent) !important;
-  color: var(--primary) !important;
+  color: var(--accent) !important;
 }
 
-/* doctor 模式分頁 */
-.doctor-tab {
-  background: rgba(255,255,255,0.60) !important;
-  border-color: rgba(210,175,165,0.30) !important;
-  color: var(--text-secondary) !important;
-}
-.doctor-tab.active {
-  background: rgba(195,130,140,0.10) !important;
-  border-color: var(--accent) !important;
-  color: var(--primary) !important;
-}
+/* 醫生上傳區 */
 .doctor-upload-zone {
-  border-color: rgba(195,130,140,0.35) !important;
-  background: rgba(255,255,255,0.55) !important;
+  border-color: rgba(90, 150, 100, 0.32) !important;
+  background: rgba(10, 28, 14, 0.50) !important;
 }
 
-/* 藥物 seller tab */
-.seller-tab {
-  background: rgba(255,255,255,0.65) !important;
-  border-color: rgba(210,175,165,0.30) !important;
-  color: var(--text-secondary) !important;
-}
-.seller-tab.active {
-  background: rgba(195,130,140,0.10) !important;
-  border-color: var(--accent) !important;
-  color: var(--primary) !important;
-}
-.seller-tab:hover { border-color: var(--accent) !important; color: var(--primary) !important; }
-
-/* 賣家卡片 */
-.seller-card {
-  background: rgba(255,255,255,0.72) !important;
-  border-color: rgba(210,175,165,0.28) !important;
+/* 藥物/賣家卡片 */
+.medicine-card, .seller-card, .garden-card, .garden-item {
+  background: rgba(12, 32, 16, 0.70) !important;
+  border-color: rgba(80, 140, 90, 0.20) !important;
 }
 .seller-card:hover {
   border-color: var(--accent) !important;
-  background: rgba(255,255,255,0.95) !important;
+  background: rgba(18, 44, 24, 0.90) !important;
 }
 
-/* 藥物卡片 */
-.medicine-card {
-  background: rgba(255,255,255,0.68) !important;
-  border-color: rgba(210,175,165,0.28) !important;
-}
+/* 花園 */
+.garden-card { background: rgba(12, 32, 16, 0.70) !important; }
 
-/* 各種 badge rgba 深色 */
-[style*="rgba(84,255,189"] { color: var(--primary) !important; }
-
-/* 掃描標題漸層文字 */
-.scan-title {
-  background: linear-gradient(to right, var(--text-primary), var(--text-secondary)) !important;
-  -webkit-background-clip: text !important;
-  -webkit-text-fill-color: transparent !important;
-}
-
-/* 世界地圖區塊 */
-#world-chart-div { opacity: 0.9; }
-
-/* 區段標題與數據面板 */
-.section-header-title, .stat-value { color: var(--text-primary) !important; }
+/* 統計數字 */
+.stat-value { color: var(--accent) !important; }
 .stat-label { color: var(--text-muted) !important; }
