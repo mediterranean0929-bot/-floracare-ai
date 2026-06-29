@@ -724,6 +724,21 @@ const WIKI_PLANTS = [
 ];
 WIKI_PLANTS.forEach(p => { p._source = 'wiki'; p._wikiImg = null; p.description = ''; });
 
+const PLANT_DB_WIKI_SLUGS = {
+  monstera: 'Monstera_deliciosa', snake_plant: 'Sansevieria_trifasciata',
+  fiddle_leaf_fig: 'Ficus_lyrata', pothos: 'Epipremnum_aureum',
+  spider_plant: 'Chlorophytum_comosum', peace_lily: 'Spathiphyllum',
+  aloe_vera: 'Aloe_vera', jade_plant: 'Crassula_ovata',
+  boston_fern: 'Nephrolepis_exaltata', calathea_orbifolia: 'Calathea_orbifolia',
+  succulents: 'Succulent_plant', rosemary: 'Salvia_rosmarinus',
+  zz_plant: 'Zamioculcas', lavender: 'Lavandula',
+  orchid: 'Phalaenopsis', rose: 'Rosa',
+  sunflower: 'Helianthus_annuus', hydrangea: 'Hydrangea'
+};
+PLANT_DATABASE.forEach(p => {
+  if (PLANT_DB_WIKI_SLUGS[p.id]) { p.wikiSlug = PLANT_DB_WIKI_SLUGS[p.id]; p._wikiImg = null; }
+});
+
 const ALL_PLANTS = [...PLANT_DATABASE, ...WIKI_PLANTS];
 
 function initEncyclopedia() {
@@ -814,7 +829,7 @@ function renderEncyclopediaGrid(plants = ALL_PLANTS) {
     const isWiki = plant._source === 'wiki';
 
     let imgHTML;
-    if (isWiki) {
+    if (plant.wikiSlug) {
       if (plant._wikiImg) {
         imgHTML = `<img src="${plant._wikiImg}" alt="${plant.name}" onerror="this.style.display='none'">`;
       } else {
@@ -1656,7 +1671,7 @@ async function fetchWikiSummary(title) {
 }
 
 async function loadWikiPlantImages() {
-  await Promise.allSettled(WIKI_PLANTS.map(async plant => {
+  await Promise.allSettled(ALL_PLANTS.filter(p => p.wikiSlug).map(async plant => {
     const data = await fetchWikiSummary(plant.wikiSlug);
     if (!data) return;
 
