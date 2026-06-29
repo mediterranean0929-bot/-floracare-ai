@@ -1524,6 +1524,52 @@ function initWorldMap() {
     return (id && WORLD_PLANTS[id]) ? am5.color(0x7a9860) : fill;
   });
 
+  // Tooltip 同時顯示中文名 + 英文名
+  polygonSeries.mapPolygons.template.adapters.add("tooltipText", (text, target) => {
+    const id = target.dataItem?.get("id");
+    const en = target.dataItem?.get("name") ?? "";
+    return (id && WORLD_PLANTS[id]) ? `${WORLD_PLANTS[id].country}  ${en}` : en;
+  });
+
+  // 26 個資料國家的中文地圖標籤
+  const LABEL_COORDS = {
+    TW:[121.0,23.7],  JP:[138.3,36.2],  CN:[104.2,35.9],  KR:[127.8,35.9],
+    IN:[79.0,20.6],   TH:[101.0,15.9],  ID:[117.0,-2.5],  SG:[103.8,1.4],
+    EG:[30.8,26.8],   ZA:[25.1,-29.0],  KE:[37.9,-0.0],   SA:[45.1,23.9],
+    GB:[-3.4,55.4],   FR:[2.2,46.2],    DE:[10.5,51.2],   IT:[12.6,41.9],
+    ES:[-3.8,40.5],   NL:[5.3,52.1],    RU:[96.7,60.1],   GR:[21.8,39.1],
+    US:[-98.6,39.8],  CA:[-96.8,56.1],  BR:[-51.9,-14.2], MX:[-102.6,23.6],
+    PE:[-75.0,-9.2],  AU:[133.8,-25.3],
+  };
+  const cnLabelSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
+  cnLabelSeries.bullets.push(() =>
+    am5.Bullet.new(root, {
+      sprite: am5.Label.new(root, {
+        populateText: true,
+        text: "{cnName}",
+        fontSize: 9,
+        fontWeight: "700",
+        fill: am5.color(0x2d4a1e),
+        centerX: am5.percent(50),
+        centerY: am5.percent(50),
+        interactive: false,
+        background: am5.RoundedRectangle.new(root, {
+          fill: am5.color(0xf8f5ec),
+          fillOpacity: 0.72,
+          cornerRadiusTL: 2, cornerRadiusTR: 2,
+          cornerRadiusBL: 2, cornerRadiusBR: 2,
+        }),
+        paddingTop: 1, paddingBottom: 1, paddingLeft: 3, paddingRight: 3,
+      }),
+    })
+  );
+  cnLabelSeries.data.setAll(
+    Object.entries(LABEL_COORDS).map(([id, [lng, lat]]) => ({
+      geometry: { type: "Point", coordinates: [lng, lat] },
+      cnName: WORLD_PLANTS[id]?.country ?? "",
+    }))
+  );
+
   // 點擊：切換選取狀態並顯示植物資訊
   let activePolygon = null;
 
