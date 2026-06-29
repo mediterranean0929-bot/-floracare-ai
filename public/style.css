@@ -1924,12 +1924,12 @@ nav {
   bottom: 14px;
   left: 50%;
   transform: translateX(-50%);
-  font-size: 11px;
-  color: var(--text-muted);
+  font-size: 14px;
+  color: #f0ede4;
   background: rgba(0, 0, 0, 0.55);
   border: 1px solid var(--border-color);
   border-radius: 20px;
-  padding: 5px 14px;
+  padding: 6px 18px;
   white-space: nowrap;
   pointer-events: none;
   backdrop-filter: blur(6px);
