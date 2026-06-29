@@ -1531,6 +1531,24 @@ function initWorldMap() {
     return (id && WORLD_PLANTS[id]) ? `${WORLD_PLANTS[id].country}  ${en}` : en;
   });
 
+  // Tooltip 樣式：無框框，文字用地圖提示條同款奶白色
+  const mapTooltip = am5.Tooltip.new(root, { autoTextColor: false });
+  mapTooltip.get("background").setAll({
+    fillOpacity: 0,
+    strokeOpacity: 0,
+    shadowOpacity: 0,
+  });
+  mapTooltip.label.setAll({
+    fill: am5.color(0xf0ede4),
+    fontSize: 14,
+    fontWeight: "700",
+    shadowColor: am5.color(0x1a2e10),
+    shadowBlur: 6,
+    shadowOffsetX: 0,
+    shadowOffsetY: 1,
+  });
+  polygonSeries.mapPolygons.template.set("tooltip", mapTooltip);
+
   // 點擊：切換選取狀態並顯示植物資訊
   let activePolygon = null;
 
