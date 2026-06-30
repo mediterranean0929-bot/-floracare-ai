@@ -1688,17 +1688,24 @@ async function fetchWikiSummary(title) {
       pithumbsize: '600', exintro: '1', exchars: '300',
       explaintext: '1', redirects: '1', origin: '*'
     });
-    const res = await fetch(`https://en.wikipedia.org/w/api.php?${params}`);
-    if (!res.ok) throw new Error();
-    const json = await res.json();
-    const pages = json.query?.pages;
-    if (!pages) throw new Error();
-    const page = Object.values(pages)[0];
-    if (!page || page.missing !== undefined) throw new Error();
-    return {
-      img: page.thumbnail?.source ?? null,
-      extract: (page.extract ?? '').replace(/\n+/g, ' ').trim()
-    };
+    // 並行抓取：英文版取圖片，中文版取說明
+    const [enRes, zhRes] = await Promise.all([
+      fetch(`https://en.wikipedia.org/w/api.php?${params}`),
+      fetch(`https://zh.wikipedia.org/w/api.php?${params}`)
+    ]);
+    const enJson = enRes.ok ? await enRes.json() : null;
+    const zhJson = zhRes.ok ? await zhRes.json() : null;
+
+    const enPage = enJson ? Object.values(enJson.query?.pages ?? {})[0] : null;
+    const zhPage = zhJson ? Object.values(zhJson.query?.pages ?? {})[0] : null;
+
+    const img = enPage?.thumbnail?.source ?? null;
+    const zhExtract = (zhPage && zhPage.missing === undefined && zhPage.extract)
+      ? zhPage.extract.replace(/\n+/g, ' ').trim()
+      : null;
+    const extract = zhExtract || (enPage?.extract ?? '').replace(/\n+/g, ' ').trim();
+
+    return { img, extract };
   } catch {
     return null;
   }
