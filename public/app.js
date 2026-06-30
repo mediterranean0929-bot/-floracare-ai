@@ -1742,30 +1742,25 @@ function openWikiProfile(plant) {
   const sheet = document.getElementById('plant-profile-sheet');
   sheet.style.setProperty('--plant-color', plant.themeColor);
 
-  // 標頭背景圖
-  const sheetHeader = document.querySelector('.sheet-header');
-  let headerImg = sheetHeader.querySelector('.sheet-header-img');
-  if (!headerImg) {
-    headerImg = document.createElement('img');
-    headerImg.className = 'sheet-header-img';
-    sheetHeader.insertBefore(headerImg, sheetHeader.firstChild);
-  }
-  headerImg.style.opacity = '0';
+  // 左欄：植物真實照片
+  const photoImg = document.getElementById('sheet-photo-img');
+  photoImg.style.opacity = '0';
   if (plant._wikiImg) {
-    headerImg.src = plant._wikiImg;
-    headerImg.onload  = () => { headerImg.style.opacity = '0.45'; };
-    headerImg.onerror = () => { headerImg.style.opacity = '0'; };
+    photoImg.src = plant._wikiImg;
+    photoImg.onload  = () => { photoImg.style.opacity = '1'; };
+    photoImg.onerror = () => { photoImg.style.opacity = '0'; };
   } else {
-    headerImg.src = '';
-    // 若圖片尚未載入，非同步補上
-    fetchWikiSummary(plant.wikiSlug).then(data => {
-      if (!data || !data.img) return;
-      plant._wikiImg = data.img;
-      plant.description = data.extract.slice(0, 127).replace(/\s\S+$/, '') + '…';
-      headerImg.src = data.img;
-      headerImg.onload = () => { headerImg.style.opacity = '0.45'; };
-      document.getElementById('sheet-description').innerText = plant.description;
-    });
+    photoImg.src = '';
+    if (plant.wikiSlug) {
+      fetchWikiSummary(plant.wikiSlug).then(data => {
+        if (!data || !data.img) return;
+        plant._wikiImg = data.img;
+        if (data.extract) plant.description = data.extract.slice(0, 127).replace(/\s\S+$/, '') + '…';
+        photoImg.src = data.img;
+        photoImg.onload = () => { photoImg.style.opacity = '1'; };
+        document.getElementById('sheet-description').innerText = plant.description;
+      });
+    }
   }
 
   document.getElementById('sheet-cn-name').innerText = plant.name;

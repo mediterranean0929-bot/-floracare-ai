@@ -452,6 +452,14 @@
        ========================================================================== -->
   <div class="side-sheet-backdrop" id="side-sheet-backdrop"></div>
   <div class="side-sheet" id="plant-profile-sheet" style="--plant-color: var(--accent)">
+
+    <!-- 左側：植物真實照片 -->
+    <div class="sheet-photo-col">
+      <img id="sheet-photo-img" class="sheet-photo-img" alt="植物照片">
+    </div>
+
+    <!-- 右側：照護資訊 -->
+    <div class="sheet-info-col">
     <div class="sheet-header">
       <button class="btn-close-sheet" onclick="closeSideSheet()"><i class="fas fa-times"></i></button>
       <div class="sheet-title-info">
@@ -535,6 +543,7 @@
     <div class="sheet-action-bar">
       <button class="btn-outline" onclick="closeSideSheet()" style="flex:1;">關閉詳情</button>
     </div>
+    </div><!-- /sheet-info-col -->
   </div>
 
   <!-- 全局飄浮 Toast 發光通知 -->
