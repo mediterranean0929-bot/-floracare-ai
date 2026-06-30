@@ -1744,23 +1744,22 @@ function openWikiProfile(plant) {
 
   // 左欄：植物真實照片
   const photoImg = document.getElementById('sheet-photo-img');
+  const showPhoto = () => { photoImg.style.opacity = '1'; };
   photoImg.style.opacity = '0';
+  photoImg.onload  = showPhoto;
+  photoImg.onerror = () => { photoImg.style.opacity = '0'; };
+
   if (plant._wikiImg) {
     photoImg.src = plant._wikiImg;
-    photoImg.onload  = () => { photoImg.style.opacity = '1'; };
-    photoImg.onerror = () => { photoImg.style.opacity = '0'; };
-  } else {
-    photoImg.src = '';
-    if (plant.wikiSlug) {
-      fetchWikiSummary(plant.wikiSlug).then(data => {
-        if (!data || !data.img) return;
-        plant._wikiImg = data.img;
-        if (data.extract) plant.description = data.extract.slice(0, 127).replace(/\s\S+$/, '') + '…';
-        photoImg.src = data.img;
-        photoImg.onload = () => { photoImg.style.opacity = '1'; };
-        document.getElementById('sheet-description').innerText = plant.description;
-      });
-    }
+    if (photoImg.complete && photoImg.naturalWidth > 0) showPhoto();
+  } else if (plant.wikiSlug) {
+    fetchWikiSummary(plant.wikiSlug).then(data => {
+      if (!data || !data.img) return;
+      plant._wikiImg = data.img;
+      if (data.extract) plant.description = data.extract.slice(0, 127).replace(/\s\S+$/, '') + '…';
+      photoImg.src = data.img;
+      document.getElementById('sheet-description').innerText = plant.description || '';
+    });
   }
 
   document.getElementById('sheet-cn-name').innerText = plant.name;
